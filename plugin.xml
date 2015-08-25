@@ -27,8 +27,7 @@
     <description>Cordova Ip Address Plugin</description>
     <license>Apache 2.0</license>
     <keywords>cordova,ip address</keywords>
-    <!--<repo>https://git-wip-us.apache.org/repos/asf/cordova-plugin-device.git</repo>-->
-    <issue>https://issues.apache.org/jira/browse/CB/component/12320648</issue>
+    <repo>https://github.com/MangoTools/cordova-plugin-ipAddress.git</repo>
 
     <js-module src="www/device.js" name="device">
         <clobbers target="device" />
