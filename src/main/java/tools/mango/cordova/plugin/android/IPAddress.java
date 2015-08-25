@@ -12,34 +12,34 @@ import org.apache.cordova.CordovaResourceApi;
 import org.apache.cordova.CordovaResourceApi.OpenForReadResult;
 import org.apache.cordova.PluginResult;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import tools.mango.cordova.plugin.android.IpUtils;
 
 
 
-public class IPAddress extends CordovaPlugin {
-    WifiManager wifiMgr;
-    DhcpInfo ipConfig;
+public class IpAddress extends CordovaPlugin {
 
     JSONObject netConfig = new JSONObject();
 
     @Override
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
-        wifiMgr= (WifiManager) cordova.getActivity().getSystemService(Context.WIFI_SERVICE);
-        ipConfig= wifiMgr.getDhcpInfo();
+        WifiManager wifiMgr = (WifiManager) cordova.getActivity().getSystemService(Context.WIFI_SERVICE);
+        DhcpInfo ipConfig   = wifiMgr.getDhcpInfo();
 
-        if(IPv4.toIpv4(ipConfig.ipAddress).compareTo("0.0.0.0")!= 0){
-            netConfig.put("ipAddress",IPv4.toIpv4(ipConfig.ipAddress));
+        if(IpUtils.toIpv4(ipConfig.ipAddress).compareTo("0.0.0.0")!= 0){
+            netConfig.put("ipAddress",IpUtils.toIpv4(ipConfig.ipAddress));
         }
-        netConfig.put("ipAddress",IPv4.toIpv4(ipConfig.ipAddress));
-        netConfig.put("macAddress",IPv4.toIpv4(ipConfig.ipAddress));
-        netConfig.put("netmask", ipConfig.netmask);
-        netConfig.put("localSubnet", IPv4.toIpv4(ipConfig.netmask));
-        netConfig.put("gateway", ipConfig.gateway);
-        netConfig.put("dns1",ipConfig.dns1);
-        netConfig.put("dns2",ipConfig.dns1);
+        netConfig.put("ipAddress",IpUtils.toIpv4(ipConfig.ipAddress));
+        netConfig.put("macAddress",IpUtils.toIpv4(ipConfig.ipAddress));
+        netConfig.put("netmask", IpUtils.toIpv4(ipConfig.netmask));
+        netConfig.put("gateway", IpUtils.toIpv4(ipConfig.gateway));
+        netConfig.put("dns1",IpUtils.toIpv4(ipConfig.dns1));
+        netConfig.put("dns2",IpUtils.toIpv4(ipConfig.dns1));
 
-        if (netConfig != null && netConfig.length() > 0) {
+        if (netConfig != null) {
             callbackContext.success(netConfig);
             return true;
         } else {
@@ -50,7 +50,7 @@ public class IPAddress extends CordovaPlugin {
     }
 
     public static String getMacAddress(Context context) {
-        wifiMgr = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        WifiManager wifiMgr = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
         return wifiMgr.getConnectionInfo().getMacAddress();
     }
 }

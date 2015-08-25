@@ -3,10 +3,10 @@ package tools.mango.cordova.plugin.android;
 import java.util.ArrayList;
 import java.util.List;
 
-public class IPv4 {
+public class IpUtils {
     int baseIPnumeric;
     int netmaskNumeric;
-    public IPv4(String symbolicIP, String netmask) throws NumberFormatException {
+    public IpUtils(String symbolicIP, String netmask) throws NumberFormatException {
 
         /* IP */
         String[] st = symbolicIP.split("\\.");
@@ -87,7 +87,7 @@ public class IPv4 {
      *
      *@param IPinCIDRFormat
      */
-    public IPv4(String IPinCIDRFormat) throws NumberFormatException {
+    public IpUtils(String IPinCIDRFormat) throws NumberFormatException {
 
         String[] st = IPinCIDRFormat.split("\\/");
         if (st.length != 2)
@@ -398,7 +398,7 @@ public class IPv4 {
             return false;
     }
 
-    public boolean contains(IPv4 child) {
+    public boolean contains(IpUtils child) {
 
         Integer subnetID = child.baseIPnumeric;
 

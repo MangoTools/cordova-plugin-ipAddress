@@ -1,22 +1,17 @@
 
-var argscheck = require('cordova/argscheck'),
-channel = require('cordova/channel'),
-utils = require('cordova/utils'),
-exec = require('cordova/exec'),
-cordova = require('cordova');
+var cordova = require('cordova');
 
-var IPAddress = function () {};
+var IpAddress = function () {};
 
-var IPAddressError = function(code, message) {
+var IpAddressError = function(code, message) {
     this.code = code || null;
     this.message = message || '';
 };
 
-IPAddressError.NO_IP_ADDRESS = 0;
+IpAddressError.NO_IP_ADDRESS = 0;
 
-IPAddress.prototype.get = function(success,fail) {
-    exec(success,fail,"IpAddress",
-        "get",[]);
+IpAddress.prototype.get = function(success,fail) {
+    return cordova.exec(success,fail,"IpAddress","get",[]);
 };
 
-module.exports = new IPAddress();
+module.exports = new IpAddress();

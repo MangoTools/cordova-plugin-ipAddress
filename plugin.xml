@@ -29,30 +29,14 @@
     <keywords>cordova,ip address</keywords>
     <repo>https://github.com/MangoTools/cordova-plugin-ipAddress.git</repo>
 
-    <js-module src="www/device.js" name="device">
-        <clobbers target="device" />
-    </js-module>
-
-
-    <!-- android -->
-    <platform name="android">
-        <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="Device" >
-                <param name="android-package" value="org.apache.cordova.device.Device"/>
-            </feature>
-        </config-file>
-
-        <source-file src="src/android/Device.java" target-dir="src/org/apache/cordova/device" />
-    </platform>
-
     <js-module src="www/IpAddress.js" name="IpAddress">
-        <clobbers target="window.IpAddress" />
+        <clobbers target="cordova.plugins.ipAddress" />
     </js-module>
 
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="IpAddress" >
-                <param name="android-package" value="tools.mango.cordova.plugins.android.IpAddress"/>
+                <param name="android-package" value="tools.mango.cordova.plugin.android.IpAddress"/>
                 <param name="onload" value="true" />
             </feature>
         </config-file>
@@ -60,10 +44,13 @@
         <config-file target="AndroidManifest.xml" parent="/*">
             <uses-permission android:name="android.permission.INTERNET" />
             <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+            <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
             <uses-permission android:name="android.permission.READ_PHONE_STATE" />
         </config-file >
 
-        <source-file src="src/main/java/tools/cordova/plugin/android/IpAddress.java" target-dir="src/main/java/tools/cordova/plugin/android" />
+        <source-file src="src/main/java/tools/mango/cordova/plugin/android/IpAddress.java" target-dir="src/main/java/tools/mango/cordova/plugin/android" />
+        <source-file src="src/main/java/tools/mango/cordova/plugin/android/IpUtils.java" target-dir="src/main/java/tools/mango/cordova/plugin/android" />
+        <source-file src="libs/json-simple-1.1.1.jar" target-dir="libs" />
     </platform>
 
 </plugin>
