@@ -41,8 +41,6 @@
             </feature>
         </config-file>
 
-        <framework src="src/main/java/tools/mango/cordova/plugin/android/ipAddress.gradle" custom="true" type="gradleReference"/>
-
 
         <config-file target="AndroidManifest.xml" parent="/*">
             <uses-permission android:name="android.permission.INTERNET" />
