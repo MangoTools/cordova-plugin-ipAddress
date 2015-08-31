@@ -30,7 +30,7 @@
     <repo>https://github.com/MangoTools/cordova-plugin-ipAddress.git</repo>
 
     <js-module src="www/IpAddress.js" name="IpAddress">
-        <clobbers target="cordova.plugins.ipAddress" />
+        <clobbers target="cordova-plugins-ipAddress" />
     </js-module>
 
     <platform name="android">
@@ -41,6 +41,9 @@
             </feature>
         </config-file>
 
+        <framework src="src/main/java/tools/mango/cordova/plugin/android/ipAddress.gradle" custom="true" type="gradleReference"/>
+
+
         <config-file target="AndroidManifest.xml" parent="/*">
             <uses-permission android:name="android.permission.INTERNET" />
             <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -50,7 +53,6 @@
 
         <source-file src="src/main/java/tools/mango/cordova/plugin/android/IpAddress.java" target-dir="src/main/java/tools/mango/cordova/plugin/android" />
         <source-file src="src/main/java/tools/mango/cordova/plugin/android/IpUtils.java" target-dir="src/main/java/tools/mango/cordova/plugin/android" />
-        <source-file src="libs/json-simple-1.1.1.jar" target-dir="libs" />
     </platform>
 
 </plugin>
