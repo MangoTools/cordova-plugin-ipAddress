@@ -33,7 +33,7 @@ public class IpAddress extends CordovaPlugin {
             netConfig.put("ipAddress",IpUtils.toIpv4(ipConfig.ipAddress));
         }
         netConfig.put("ipAddress",IpUtils.toIpv4(ipConfig.ipAddress));
-        netConfig.put("macAddress",IpUtils.toIpv4(ipConfig.ipAddress));
+        netConfig.put("macAddress",getMacAddress());
         netConfig.put("netmask", IpUtils.toIpv4(ipConfig.netmask));
         netConfig.put("gateway", IpUtils.toIpv4(ipConfig.gateway));
         netConfig.put("dns1",IpUtils.toIpv4(ipConfig.dns1));
@@ -49,8 +49,8 @@ public class IpAddress extends CordovaPlugin {
         }
     }
 
-    public static String getMacAddress(Context context) {
-        WifiManager wifiMgr = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+    public static String getMacAddress() {
+        WifiManager wifiMgr = (WifiManager) cordova.getActivity().getSystemService(Context.WIFI_SERVICE);
         return wifiMgr.getConnectionInfo().getMacAddress();
     }
 }
