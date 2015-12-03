@@ -29,7 +29,7 @@
     <keywords>cordova,ip address</keywords>
     <repo>https://github.com/MangoTools/cordova-plugin-ipAddress.git</repo>
 
-    <js-module src="www/IpAddress.js" name="IpAddress">
+    <js-module src="www/ipAddress.js" name="IpAddress">
         <clobbers target="cordova-plugins-ipAddress" />
     </js-module>
 
@@ -49,8 +49,8 @@
             <uses-permission android:name="android.permission.READ_PHONE_STATE" />
         </config-file >
 
-        <source-file src="src/main/java/tools/mango/cordova/plugin/android/IpAddress.java" target-dir="src/main/java/tools/mango/cordova/plugin/android" />
-        <source-file src="src/main/java/tools/mango/cordova/plugin/android/IpUtils.java" target-dir="src/main/java/tools/mango/cordova/plugin/android" />
+        <source-file src="src/main/java/tools/mango/cordova/plugin/android/ipAddress.java" target-dir="src/main/java/tools/mango/cordova/plugin/android" />
+        <source-file src="src/main/java/tools/mango/cordova/plugin/android/ipUtils.java" target-dir="src/main/java/tools/mango/cordova/plugin/android" />
     </platform>
 
 </plugin>
